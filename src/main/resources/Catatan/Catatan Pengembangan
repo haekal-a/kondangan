@@ -86,19 +86,12 @@
     4 = Sudah Dibayarkan
 
 
-8 Nov 2021
-Flag PSIAP
-    1 = Dalam Proses QA
-    2 = Diperbarui
-    3 = Ditolak
-    4 = Disetujui
-Deliverables Status
-     1 = Dalam Proses QA
-     2 = Perbaikan oleh Deloitte
-     3 = Ditolak
-     4 = Telah Disetujui Steerco
-
+10 Nov 2021
+Alur Dokumen > tambah > tanggal surat dan tanggal submit dan tanggal ND PPK -> tootip ada termasuk no surat, harusya tanggal.
 
     !! PERHATIAN !!
     file  (/dist/img/LogoDJPSekunder.png) klik kanan >> git >> add >> baru commit & push
     kasus nek koe nambahi file2 baru
+
+12 Des 2016
+yang tampil di dashboard, monitoring dengan status yang tidak reallocated
