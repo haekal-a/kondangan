@@ -14,9 +14,9 @@ import java.util.List;
 public interface MonitoringRepo extends JpaRepository<Monitoring, BigDecimal> {
     Monitoring findByDeliverableCodeAndPeriod(String deliverableCode, Integer period);
 
-    long countByPosition(Integer position);
+    long countByPositionAndSubmissionStatusIsNot(Integer position, String submissionStatus);
 
-    long countByPaymentStatus(String paymentStatus);
+    long countByPaymentStatusAndSubmissionStatusIsNot(String paymentStatus, String submissionStatus);
 
     @Query(RepoQuery.COUNT_TOTAL_MONITORING_BY_POSITION_GROUP_BY_PERIOD)
     List<MonitoringCountModel> countTotalMonitoringByPositionGroupByPeriod(Integer position);

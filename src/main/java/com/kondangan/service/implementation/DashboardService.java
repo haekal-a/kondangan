@@ -9,6 +9,7 @@ import com.kondangan.repository.DetailDocumentRepo;
 import com.kondangan.repository.MonitoringRepo;
 import com.kondangan.service.IDashboardService;
 import com.kondangan.service.common.UtilityService;
+import com.kondangan.util.Constanta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,9 +79,9 @@ public class DashboardService implements IDashboardService {
 
     @Override
     public ResponseModel getPieChart() {
-        long prosesQa = monitoringRepo.countByPosition(1);
-        long perbaikan = monitoringRepo.countByPosition(2);
-        long disetujui = monitoringRepo.countByPosition(3);
+        long prosesQa = monitoringRepo.countByPositionAndSubmissionStatusIsNot(1, Constanta.SUBMISSION_STATUS_REALLOCATED);
+        long perbaikan = monitoringRepo.countByPositionAndSubmissionStatusIsNot(2, Constanta.SUBMISSION_STATUS_REALLOCATED);
+        long disetujui = monitoringRepo.countByPositionAndSubmissionStatusIsNot(3, Constanta.SUBMISSION_STATUS_REALLOCATED);
         List<String> label = new ArrayList<>();
         label.add("Dalam Proses QA");
         label.add("Perbaikan oleh Deloitte");
@@ -93,10 +94,10 @@ public class DashboardService implements IDashboardService {
         deliverableStatus.put("deliverableLabel", label);
         deliverableStatus.put("deliverableData", data);
 
-        long belumDibayar = monitoringRepo.countByPaymentStatus("1");
-        long siapDibayar = monitoringRepo.countByPaymentStatus("2");
-        long prosesBayar = monitoringRepo.countByPaymentStatus("3");
-        long sudahBayar = monitoringRepo.countByPaymentStatus("4");
+        long belumDibayar = monitoringRepo.countByPaymentStatusAndSubmissionStatusIsNot("1", Constanta.SUBMISSION_STATUS_REALLOCATED);
+        long siapDibayar = monitoringRepo.countByPaymentStatusAndSubmissionStatusIsNot("2", Constanta.SUBMISSION_STATUS_REALLOCATED);
+        long prosesBayar = monitoringRepo.countByPaymentStatusAndSubmissionStatusIsNot("3", Constanta.SUBMISSION_STATUS_REALLOCATED);
+        long sudahBayar = monitoringRepo.countByPaymentStatusAndSubmissionStatusIsNot("4", Constanta.SUBMISSION_STATUS_REALLOCATED);
         label = new ArrayList<>();
         label.add("Belum Dapat Dibayarkan");
         label.add("Belum Ditagihkan");

@@ -12,12 +12,14 @@ public final class RepoQuery {
                     " FROM Monitoring AS a " +
                     " WHERE (?1 is null or a.position = ?1) " +
                     " AND a.monthSubmission is not null " +
+                    " AND a.submissionStatus <> '3' " +
                     " GROUP BY a.period ";
 
     public static final String COUNT_TOTAL_MONITORING_GROUP_BY_POSITION =
             " SELECT new com.kondangan.domain.model.MonitoringCountModel(a.position, COUNT(a.position)) " +
                     " FROM Monitoring AS a " +
                     " WHERE a.monthSubmission is not null " +
+                    " AND a.submissionStatus <> '3' " +
                     " GROUP BY a.position ";
 
     public static final String COUNT_TOTAL_MONITORING_BY_PAYMENT_GROUP_BY_PERIOD =
@@ -25,11 +27,13 @@ public final class RepoQuery {
                     " FROM Monitoring AS a " +
                     " WHERE (?1 is null or a.paymentStatus = ?1) " +
                     " AND a.monthSubmission is not null " +
+                    " AND a.submissionStatus <> '3' " +
                     " GROUP BY a.period ";
 
     public static final String COUNT_TOTAL_MONITORING_GROUP_BY_PAYMENT =
             " SELECT new com.kondangan.domain.model.MonitoringCountModel(a.paymentStatus, COUNT(a.paymentStatus)) " +
                     " FROM Monitoring AS a " +
                     " WHERE a.monthSubmission is not null " +
+                    " AND a.submissionStatus <> '3' " +
                     " GROUP BY a.paymentStatus ";
 }

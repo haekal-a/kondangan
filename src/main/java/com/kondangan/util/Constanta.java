@@ -26,4 +26,6 @@ public final class Constanta {
     public static final String LEVEL_ADMIN = "1";
     public static final String LEVEL_USER = "2";
 
+    public static final String SUBMISSION_STATUS_REALLOCATED = "3";
+
 }
